@@ -18,6 +18,7 @@ pub mod util {
     };
 
     #[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]
+    #[derive(Debug)]
     pub struct SimplePosition<N: RealField>(pub Isometry3<N>);
 
     impl<N: RealField> Position<N> for SimplePosition<N> {
