@@ -6,7 +6,7 @@ use crate::{
         object::{Body, BodyHandle, BodyPart, BodyStatus, RigidBody, RigidBodyDesc},
     },
 };
-#[cfg(feature = "serde-serialization")]
+#[cfg(feature = "serde-serialize")]
 use serde::{Serialize, Deserialize};
 
 pub mod util {
