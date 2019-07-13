@@ -6,11 +6,11 @@ use crate::{
         object::{Body, BodyHandle, BodyPart, BodyStatus, RigidBody, RigidBodyDesc},
     },
 };
-#[cfg(feature = "serde-serialize")]
-use serde::{Serialize, Deserialize};
-
 pub mod util {
     use specs::{Component, DenseVecStorage, FlaggedStorage};
+
+    #[cfg(feature = "serde-serialize")]
+    use serde::{Serialize, Deserialize};
 
     use crate::{
         bodies::Position,
