@@ -17,11 +17,7 @@ pub mod util {
         nalgebra::{Isometry3, RealField},
     };
 
-    #[cfg(feature = "serde-serialization")]
-    #[derive(Serialize, Deserialize)]
-    pub struct SimplePosition<N: RealField>(pub Isometry3<N>);
-
-    #[cfg(not(feature = "serde-serialization"))]
+    #[cfg_attr(feature = "serde-serialization", derive(Serialize, Deserialize))]
     pub struct SimplePosition<N: RealField>(pub Isometry3<N>);
 
     impl<N: RealField> Position<N> for SimplePosition<N> {
