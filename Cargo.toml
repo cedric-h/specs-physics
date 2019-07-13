@@ -15,7 +15,7 @@ keywords = ["specs", "nphysics", "nphysics3d"]
 
 [features]
 default = []
-serde-serialization = ["serde"]
+serde-serialize = ["serde"]
 amethyst = ["amethyst_core"]
 
 [dependencies]
