@@ -1,5 +1,4 @@
 use specs::{Component, DenseVecStorage, FlaggedStorage};
-
 use crate::{
     nalgebra::{Isometry3, Matrix3, Point3, RealField},
     nphysics::{
@@ -7,6 +6,8 @@ use crate::{
         object::{Body, BodyHandle, BodyPart, BodyStatus, RigidBody, RigidBodyDesc},
     },
 };
+#[cfg(feature = "serde-serialization")]
+use serde::{Serialize, Deserialize};
 
 pub mod util {
     use specs::{Component, DenseVecStorage, FlaggedStorage};
@@ -16,6 +17,11 @@ pub mod util {
         nalgebra::{Isometry3, RealField},
     };
 
+    #[cfg(feature = "serde-serialization")]
+    #[derive(Serialize, Deserialize)]
+    pub struct SimplePosition<N: RealField>(pub Isometry3<N>);
+
+    #[cfg(not(feature = "serde-serialization"))]
     pub struct SimplePosition<N: RealField>(pub Isometry3<N>);
 
     impl<N: RealField> Position<N> for SimplePosition<N> {

@@ -238,6 +238,9 @@
 #[macro_use]
 extern crate log;
 
+//#[macro_use]
+//extern crate serde;
+
 pub use nalgebra;
 pub use ncollide3d as ncollide;
 pub use nphysics3d as nphysics;
