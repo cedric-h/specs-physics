@@ -284,7 +284,7 @@ mod tests {
             .with(SimplePosition::<f32>(Isometry3::<f32>::translation(
                 1.0, 1.0, 1.0,
             )))
-            .with(PhysicsColliderBuilder::<f32>::from(Shape::Circle(5.0)).build())
+            .with(PhysicsColliderBuilder::<f32>::from(Shape::Ball { radius: 5.0 }).build())
             .build();
         dispatcher.dispatch(&mut world);
 

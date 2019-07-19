@@ -1,4 +1,3 @@
-use specs::{Component, DenseVecStorage, FlaggedStorage};
 use crate::{
     nalgebra::{Isometry3, Matrix3, Point3, RealField},
     nphysics::{
@@ -6,11 +5,12 @@ use crate::{
         object::{Body, BodyHandle, BodyPart, BodyStatus, RigidBody, RigidBodyDesc},
     },
 };
+use specs::{Component, DenseVecStorage, FlaggedStorage};
 pub mod util {
     use specs::{Component, DenseVecStorage, FlaggedStorage};
 
     #[cfg(feature = "serde-serialize")]
-    use serde::{Serialize, Deserialize};
+    use serde::{Deserialize, Serialize};
 
     use crate::{
         bodies::Position,

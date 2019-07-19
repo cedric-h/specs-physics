@@ -4,7 +4,7 @@ extern crate simple_logger;
 use specs::{Builder, World, WorldExt};
 use specs_physics::{
     colliders::Shape,
-    nalgebra::Isometry3,
+    nalgebra::{Isometry3, Vector3},
     nphysics::object::BodyStatus,
     physics_dispatcher,
     PhysicsBodyBuilder,
@@ -31,7 +31,12 @@ fn main() {
             1.0, 1.0, 1.0,
         )))
         .with(PhysicsBodyBuilder::<f32>::from(BodyStatus::Dynamic).build())
-        .with(PhysicsColliderBuilder::<f32>::from(Shape::Rectangle(1.0, 1.0, 1.0)).build())
+        .with(
+            PhysicsColliderBuilder::<f32>::from(Shape::Cuboid {
+                half_extents: Vector3::new(1.0, 1.0, 1.0),
+            })
+            .build(),
+        )
         .build();
 
     // execute the dispatcher
