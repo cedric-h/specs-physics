@@ -311,6 +311,17 @@ impl<N: RealField> Physics<N> {
     pub fn new() -> Self {
         Self::default()
     }
+    
+    /// Computes the interferences between every rigidbody and a ray.
+    #[inline]
+    pub fn interferences_with_ray<'a>(
+        &'a self,
+        ray: &'a Ray<N>,
+        groups: &'a CollisionGroups,
+    ) -> impl Iterator<Item = (&'a Collider<N>, RayIntersection<N>)>
+    {
+        self.world.interferences_with_ray(ray, groups)
+    }
 
     /// Reports the internal value for the timestep.
     /// See also `TimeStep` for setting this value.
