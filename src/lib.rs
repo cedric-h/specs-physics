@@ -271,9 +271,13 @@ use self::{
     nphysics::{
         counters::Counters,
         material::MaterialsCoefficientsTable,
-        object::{BodyHandle, ColliderHandle},
+        object::{BodyHandle, ColliderHandle, Collider},
         solver::IntegrationParameters,
         world::World,
+    },
+    ncollide::{
+        query::{Ray, RayIntersection},
+        world::CollisionGroups,
     },
     systems::{
         PhysicsStepperSystem,
@@ -320,7 +324,7 @@ impl<N: RealField> Physics<N> {
         groups: &'a CollisionGroups,
     ) -> impl Iterator<Item = (&'a Collider<N>, RayIntersection<N>)>
     {
-        self.world.interferences_with_ray(ray, groups)
+        self.world.collider_world().interferences_with_ray(ray, groups)
     }
 
     /// Reports the internal value for the timestep.
