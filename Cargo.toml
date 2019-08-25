@@ -14,16 +14,17 @@ description = "nphysics integration for the Specs entity component system"
 keywords = ["specs", "nphysics", "nphysics3d"]
 
 [features]
-default = []
+default = ["parallel"]
+parallel = ["specs/parallel", "specs-hierarchy/parallel"]
 serde-serialize = ["serde"]
 amethyst = ["amethyst_core"]
 
 [dependencies]
 log = "0.4.6"
-specs = "0.15.0"
-specs-hierarchy = { git = "https://github.com/cedric-h/specs-hierarchy.git", branch = "update-specs" }
+specs = { version = "0.15.0", default-features = false }
+specs-hierarchy = { git = "https://github.com/cedric-h/specs-hierarchy.git", branch = "update-specs" , default-features = false}
 shrev = "1.1.1"
-nalgebra = "0.18.0"
+nalgebra = { version = "0.18.0", features = ["serde-serialize"] }
 ncollide3d = "0.19"
 nphysics3d = "0.11.1"
 amethyst_core = { version = "0.6.0", optional = true }
